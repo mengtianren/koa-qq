@@ -24,7 +24,15 @@ var server = http.createServer(app.callback());
 /**
  * Listen on provided port, on all network interfaces.
  */
+// const http-server = require('http').Server(app);
+const io = require('socket.io')(server);
 
+io.on('connection', function(socket){
+    console.log('a user connected');
+    socket.on('chat message', function(msg){
+        io.emit('chat message', msg);
+    });
+});
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);

@@ -1,7 +1,6 @@
-const {User, Friend,} = require('../config/config')
-
 const md5=require('md5-node');
 
+const {User, Friend,} = require('../config/config')
 class nick_user {
 
     async register(ctx){

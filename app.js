@@ -13,7 +13,7 @@ const users = require('./routes/users')
 // error handler
 onerror(app)
 
-// middlewares
+// 解析接口query数据
 app.use(bodyparser({
   enableTypes:['json', 'form', 'text']
 }))
@@ -31,6 +31,7 @@ const sessionConfig = {
 app.use(session(sessionConfig,app))
 // logger
 app.use(async (ctx, next) => {
+
   const start = new Date()
   await next()
   const ms = new Date() - start
