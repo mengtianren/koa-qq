@@ -9,6 +9,7 @@ const session = require('koa-session')
 
 const index = require('./routes/index')
 const users = require('./routes/users')
+const upload = require('./routes/upload')
 
 // error handler
 onerror(app)
@@ -41,6 +42,7 @@ app.use(async (ctx, next) => {
 // routes
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
+app.use(upload.routes(), users.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
